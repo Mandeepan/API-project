@@ -43,12 +43,12 @@ router.get('/current', async(req,res) => {
                         include: [
                             [literal(`(
                                 SELECT AVG(stars) 
-                                FROM "airbnb-db"."Reviews" 
+                                FROM "projectschema"."Reviews" 
                                 WHERE "Reviews"."spotId" = "Spot".id
                                 )`), 'avgRating'],  
                             [literal(`(
                                 SELECT url 
-                                FROM "airbnb-db"."SpotImages" 
+                                FROM "projectschema"."SpotImages" 
                                 WHERE "SpotImages"."spotId" = "Spot".id 
                                     AND "SpotImages".preview = true 
                                 LIMIT 1
@@ -471,12 +471,12 @@ router.get('/', validateQuery, async (req,res) =>{
                     include: [
                         [literal(`(
                             SELECT AVG(stars) 
-                            FROM "airbnb-db"."Reviews" 
+                            FROM "projectschema"."Reviews" 
                             WHERE "Reviews"."spotId" = "Spot".id
                             )`), 'avgRating'],  
                         [literal(`(
                             SELECT url 
-                            FROM "airbnb-db"."SpotImages" 
+                            FROM "projectschema"."SpotImages" 
                             WHERE "SpotImages"."spotId" = "Spot".id 
                                 AND "SpotImages".preview = true 
                             LIMIT 1
