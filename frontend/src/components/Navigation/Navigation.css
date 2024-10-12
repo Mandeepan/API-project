@@ -1,0 +1,8 @@
+.profile-dropdown{
+    border : 1px olivedrab solid;
+    background-color: olivedrab;
+}
+
+.profile-dropdown-hidden {
+    display: none;
+}
