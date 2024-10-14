@@ -29,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <h1>Welcome!</h1>
+      },
+      {
+        path: '/spots',
+        element: <h1>Testing Spots route, will remove later!</h1>
       }
     ]
   }

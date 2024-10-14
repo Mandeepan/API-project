@@ -9,9 +9,12 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
-    <ul>
+    <ul className='header-list'>
         <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className='logo-area'>
+            <img src="/images/logo.svg" alt="Company Logo" className="logo-image" />
+            GoVocay
+        </NavLink>
         </li>
         {isLoaded && (
         <li>

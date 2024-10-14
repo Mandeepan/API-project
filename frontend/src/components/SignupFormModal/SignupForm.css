@@ -1,0 +1,32 @@
+.signup-modal{
+    background-color: white;
+    color: #C70039;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-header-text{
+    align-self: center;
+}
+
+.signup-modal-input{
+    display: flex;
+    flex-direction: column;
+    padding:20px
+}
+
+
+input{
+    border:  #C70039 0.5px solid;
+    margin-bottom: 10px;
+    border-radius: 5%;
+    width:100%
+ }
+
+ .signup-button{
+    width:fit-content;
+    cursor: pointer;
+    display: block;
+    margin:10px;
+    align-self: center;
+}
