@@ -15,6 +15,8 @@ function SignupFormModal() {
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
 
+
+
     const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
@@ -31,8 +33,11 @@ function SignupFormModal() {
         .then(closeModal)
         .catch(async (res) => {
             const data = await res.json();
+            console.log("===============");
+            console.log(data)
             if (data?.errors) {
             setErrors(data.errors);
+
             }
         });
     }
@@ -40,6 +45,11 @@ function SignupFormModal() {
         confirmPassword: "Confirm Password field must be the same as the Password field"
     });
     };
+
+    const isAnyFieldEmpty= (!email && !username) || !firstName || !lastName || !password || !confirmPassword ;
+    const isUserNameTooShort = username.length <4;
+    const isPasswordTooShort = password.length <6;
+    const disableSignUpButton = isAnyFieldEmpty || isUserNameTooShort || isPasswordTooShort;
 
     return (
     <div className='signup-modal'>
@@ -107,7 +117,7 @@ function SignupFormModal() {
         {errors.confirmPassword && (
             <p>{errors.confirmPassword}</p>
         )}
-        <button type="submit" className='signup-button'>Sign Up</button>
+        <button type="submit" className='signup-button' disabled={disableSignUpButton}>Sign Up</button>
         </form>
     </div>
     );
