@@ -53,7 +53,7 @@ color: #555;
 /* Description and Callout info box section*/
 .description-callout-container{
     display: flex;
-    flex-wrap: ;
+    flex-wrap: auto;
 }
 
 
@@ -80,7 +80,8 @@ color: #555;
 
 
 .price {
-    font-size: 1.5rem;
+    word-break: normal;
+    font-size: 1rem;
     color:#b5264e
 }
 
