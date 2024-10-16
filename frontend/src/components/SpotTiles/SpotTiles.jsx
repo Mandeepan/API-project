@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {getAllSpots} from '../../store/spots';
 import SpotTileItem from './SpotTileItem';
-// import * as PageNotFound from '../PageNotFound';
+import { NavLink } from 'react-router-dom';
+import PageNotFound from '../PageNotFound';
 
 export default function SpotTiles(){
     const dispatch =useDispatch();
@@ -14,14 +15,21 @@ export default function SpotTiles(){
 	}, [dispatch]);
     console.log("!!!!!!!!!")
     console.log(spots)
-    // if (!spots) return (<PageNotFound /> )
     
-    return(
+    if (!spots || spots.length === 0) {
+        return <PageNotFound />
+    }
+
+    
+    return <>
         <div className="SpotTiles">
-            {spots && spots.map(spot => <SpotTileItem spot={spot}/> )} 
-        </div>
-    )
+            {spots.map((spot, i) =>
+                <NavLink key={i} to={`/spots/${spot.id}`}>
+                    <SpotTileItem spot={spot} />
+                </NavLink>)
+            }
+        </div >
+    </>
 }
 
 
-            

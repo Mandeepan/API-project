@@ -18,7 +18,7 @@ export const getAllSpots = () => async (dispatch) => {
     } catch (err) {
         let error ={Error: err}
         const errRes= await error.json()
-        return error
+        return errRes
     }
 };
 

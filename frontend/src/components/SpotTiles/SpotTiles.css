@@ -71,16 +71,16 @@
 }
 
 .SpotTileItemFirstRow div {
-    font-size: 14px;
+    font-size: 0.8rem;
     color: #333;
 }
 
 .SpotTileItemStarRating {
-    font-size: 14px;
+    font-size: 0.8rem;
 }
 
 /* Price styling in the second row */
 .SpotTileItemPrice {
-    font-size: 16px;
+    font-size: 0.8rem;
     color: #333;
 }
