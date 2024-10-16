@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 import { FaHashtag } from "react-icons/fa";
 
+
 import {getSpotDetailThunk} from '../../store/spots';
 // import SpotTileItem from './SpotTileItem';
 // import { NavLink } from 'react-router-dom';
@@ -16,7 +17,7 @@ export default function SpotDetail(){
     const { spotId } = useParams();
     const spotDetail = useSelector((state) => state.spots.spotDetailState[spotId]);
  
-    useEffect(() => {
+    useEffect((spotId) => {
 		dispatch(getSpotDetailThunk(spotId));
 	}, [dispatch]);
     
@@ -42,7 +43,9 @@ export default function SpotDetail(){
     })
     nonPreviewImageURL = nonPreviewImageURL.slice(0, 4);
     let reviewWordText = spotDetail.numReviews >=2? 'Reviews' :'Review';
-    
+    const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
+
+    const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden"
 
     return (
         <div className="spot-details">
@@ -71,9 +74,9 @@ export default function SpotDetail(){
                 {/* Callout Information Box */}
                 <div className="callout-info-box">
                     <div className="callout-info">
-                        <h3 className="price"><strong>${spotDetail.price} </strong> night</h3>
-                        <p className="average-rating"> <FaStar /> <strong>{spotDetail.avgStarRating? spotDetail.avgStarRating : "New"}</strong></p>
-                        <p className="review-count"> <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
+                        <h3 className="price"><strong>${spotDetail.price.toLocaleString()} </strong> night</h3>
+                        <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
+                        <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
                     </div>
                     <button className="reserve-button" onClick={handleReserveClick}>Reserve</button>
                 </div>

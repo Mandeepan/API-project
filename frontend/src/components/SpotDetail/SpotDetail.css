@@ -99,6 +99,10 @@ color: #555;
     font-size: 1rem;
 }
 
+.review-count-hidden{
+    display: none;
+}
+
 .reserve-button {
     display: block;
     width: 100%;
