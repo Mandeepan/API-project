@@ -1,22 +1,20 @@
 import './SpotTiles.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {getAllSpots} from '../../store/spots';
+import {getSpotsThunk} from '../../store/spots';
 import SpotTileItem from './SpotTileItem';
 import { NavLink } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
 
 export default function SpotTiles(){
     const dispatch =useDispatch();
-    const spots = useSelector((state) => state.spots.allSpots);
+    const spots = useSelector((state) => Object.values(state.spots.spotsState));
  
     useEffect(() => {
-		dispatch(getAllSpots());
+		dispatch(getSpotsThunk());
 	}, [dispatch]);
-    console.log("!!!!!!!!!")
-    console.log(spots)
     
-    if (!spots || spots.length === 0) {
+    if (!spots || spots.length === 0 ) {
         return <PageNotFound />
     }
 

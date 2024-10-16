@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
-import Navigation from './components/Navigation';
-import * as sessionActions from './store/session';
 
+import * as sessionActions from './store/session';
+//components
+import Navigation from './components/Navigation';
 import SpotTiles from './components/SpotTiles';
+import SpotDetail from './components/SpotDetail/SpotDetail';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -33,9 +35,10 @@ const router = createBrowserRouter([
         element: <SpotTiles />
       },
       {
-        path: '/spots',
-        element: <h1>Testing Spots route, will remove later!</h1>
-      }
+				path: '/spots/:spotId',
+        // element: <h2> more to come</h2>
+				element: <SpotDetail />,
+			},
     ]
   }
 ]);
