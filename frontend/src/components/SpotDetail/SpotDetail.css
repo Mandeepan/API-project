@@ -153,3 +153,15 @@ background-color: #C70039;
     display: none;
 }
 
+
+.post-review-button{
+    width:fit-content;
+    height: max-content;
+    padding: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.post-review-button-hidden{
+    display: none;
+}

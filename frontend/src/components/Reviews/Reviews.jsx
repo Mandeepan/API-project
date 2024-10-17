@@ -27,13 +27,6 @@ export default function Reviews({spotId}){
         return <h1>{reviews.message}</h1> 
     }
 
-    console.log('+++++++++ REVIEWS ++++++++++');
-    console.log(reviews)
-    console.log('+++++++++ CURRENT USERS ++++++++++');
-    console.log(sessionUser)
-    console.log('+++++++++ SPOT ++++++++++');
-    console.log(spot)
-
     return (
         <div className="reviews-container">
             {reviews.length > 0 ? (reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((eachReview,i) => (

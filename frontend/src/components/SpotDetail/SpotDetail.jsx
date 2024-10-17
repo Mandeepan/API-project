@@ -14,6 +14,8 @@ export default function SpotDetail(){
     const dispatch =useDispatch();
     const { spotId } = useParams();
     const spotDetail = useSelector((state) => state.spots.spotDetailState[spotId]);
+    const sessionUser = useSelector(state => state.session.user);
+    const reviews = useSelector((state) => state.reviews.reviewsState);
  
     useEffect(() => {
 		dispatch(getSpotDetailThunk(spotId));
@@ -44,7 +46,13 @@ export default function SpotDetail(){
     const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
     const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden";
 
-    
+    let isReviewOwner =false ;
+    reviews.forEach(review => {
+        if (review.userId === sessionUser.id) {isReviewOwner=true}
+    })
+    const isSpotOwner = sessionUser.id=== spotDetail.ownerId
+    let postReviewClassName = 'post-review-button-hidden';
+    if (sessionUser && !isSpotOwner && !isReviewOwner) { postReviewClassName='post-review-button'}
 
     return (
         <div className="spot-details">
@@ -85,6 +93,7 @@ export default function SpotDetail(){
                             <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
                             <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
                 </div>
+                <button className={postReviewClassName}>Post Your Review</button>
                 <Reviews spotId={spotId} />
             </div>
         </div>
