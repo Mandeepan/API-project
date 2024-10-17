@@ -3,6 +3,7 @@ import "./SpotFormPage.css";
 import { useNavigate } from "react-router-dom";
 import { useState , useEffect} from 'react';
 import { createSpotThunk } from "../../store/spots";
+import {addSpotImageThunk} from '../../store/spots';
 import PageNotFound from "../PageNotFound";
 
 export default function SpotFormPage(){
@@ -76,7 +77,25 @@ export default function SpotFormPage(){
                 <p>{newSpotResponse.message}</p>
             </>
         }
-        navigate(`/spots/${newSpotResponse.id}`)
+
+        // update the image to the backend ReviewImage table
+        if (newSpotResponse) {
+			const images = [
+				{ url: formData.image1, preview: true },
+				{ url: formData.image2, preview: false },
+				{ url: formData.image3, preview: false },
+				{ url: formData.image4, preview: false },
+				{ url: formData.image5, preview: false },
+			].filter((image) => image.url);
+
+			await Promise.all(
+				images.map((image) => dispatch(addSpotImageThunk(newSpotResponse.id, image)))
+			);
+
+			navigate(`/spots/${newSpotResponse.id}`)
+		}
+
+        
     }
 
    

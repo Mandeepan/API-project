@@ -60,12 +60,38 @@ export const createSpotThunk = (spot) => async (dispatch) => {
         },
         body: JSON.stringify(spot)
     }
-    const response = await csrfFetch('/api/spots', options);
+    
     try {
+        const response = await csrfFetch('/api/spots', options);
         const newSpot = await response.json();
 		dispatch(createSpot(newSpot));
 		return newSpot;
     } catch (err) {
+        let error ={Error: err}
+        const errRes= await error.json()
+        return errRes
+    }
+}
+
+// adding spot image to spotImage table at the backend
+const ADD_SPOT_IMAGE = 'spots/ADD_SPOT_IMAGE';
+const addSpotImage = (image) => ({
+	type: ADD_SPOT_IMAGE,
+	image,
+});
+export const addSpotImageThunk = (spotId, image) => async (dispatch) => {
+    try{
+        const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(image),
+        });
+        const newImage = await response.json();
+		dispatch(addSpotImage(newImage));
+		return newImage;
+    }catch (err) {
         let error ={Error: err}
         const errRes= await error.json()
         return errRes
@@ -101,6 +127,15 @@ export default function spotsReducer(state = initialStates, action) {
                 createSpotState : action.payload
             }
         }
+        case ADD_SPOT_IMAGE: {
+			const newState = { ...state };
+			const spot = newState.spotDetailState[action.image.spotId];
+			if (spot) {
+				spot.images = spot.images || [];
+				spot.images.push(action.image);
+			}
+			return newState;
+		}
         default: return state;
     }
 }
