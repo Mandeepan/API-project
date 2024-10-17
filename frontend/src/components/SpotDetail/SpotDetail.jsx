@@ -5,11 +5,9 @@ import { useParams } from 'react-router-dom';
 import { FaStar } from "react-icons/fa";
 import { FaHashtag } from "react-icons/fa";
 
-
 import {getSpotDetailThunk} from '../../store/spots';
-// import SpotTileItem from './SpotTileItem';
-// import { NavLink } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
+import Reviews from '../Reviews';
 
 
 export default function SpotDetail(){
@@ -17,9 +15,9 @@ export default function SpotDetail(){
     const { spotId } = useParams();
     const spotDetail = useSelector((state) => state.spots.spotDetailState[spotId]);
  
-    useEffect((spotId) => {
+    useEffect(() => {
 		dispatch(getSpotDetailThunk(spotId));
-	}, [dispatch]);
+	}, [dispatch,spotId]);
     
     if (!spotDetail || spotDetail.length === 0) {
         return <PageNotFound />
@@ -81,7 +79,7 @@ export default function SpotDetail(){
                     <button className="reserve-button" onClick={handleReserveClick}>Reserve</button>
                 </div>
             </div>
-            
+            <Reviews spotId={spotId} />
         </div>
 
     )

@@ -55,10 +55,6 @@ export default function spotsReducer(state = initialStates, action) {
                 newState.spotsState[spot.id] =spot
             })
             return newState
-			// return { ...state, spotsState: action.payload.Spots};
-            // const newState = {...state,spotsState:{} };
-            // newState.spotsState = action.payload.Spots;
-            // return newState
         }
         case GET_SPOT_DETAIL: {
             return {
@@ -68,9 +64,6 @@ export default function spotsReducer(state = initialStates, action) {
 					[action.payload.id]: action.payload,
 				},
 			};
-            // const newState = { ...state };
-            // newState.spotDetailState = action.payload;
-            // return newState
         }
         default: return state;
     }
