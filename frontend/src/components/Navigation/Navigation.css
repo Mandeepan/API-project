@@ -21,6 +21,7 @@
     justify-content: space-between;
     margin-right: 3rem;
     margin-left: 3rem;
+    margin-bottom :1rem;
     font-size: 2rem;
     border-bottom: 1px grey solid;
 }
