@@ -16,11 +16,21 @@ function Navigation({ isLoaded }) {
             GoVocay
         </NavLink>
         </li>
-        {isLoaded && (
-        <li>
-            <ProfileButton user={sessionUser} />
-        </li>
-        )}
+        <ul className="header-right">
+            {sessionUser && (
+            <li>
+                <NavLink to="/spots/new" className='create-spot-button'>
+                Create a New Spot
+                </NavLink>
+            </li>
+            )}
+            {isLoaded && (
+            <li>
+                <ProfileButton user={sessionUser} />
+            </li>
+            )}
+        </ul>
+        
     </ul>
     );
 }

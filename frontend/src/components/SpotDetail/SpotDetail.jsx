@@ -44,7 +44,7 @@ export default function SpotDetail(){
     const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
     const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden";
 
-
+    
 
     return (
         <div className="spot-details">

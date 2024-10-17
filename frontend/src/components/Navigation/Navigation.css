@@ -39,9 +39,24 @@
     max-height: 3rem;
 }
 
+.header-right{
+    display:flex;
+    flex-direction:row;
+    list-style:none;
+}
+
+
 .header-right-button{
     width:2rem;
     height: 2rem;
     /* background-color: darkgray; */
     box-shadow: 2px 2px 2px grey;
+    margin-left:1rem
+}
+
+.create-spot-button{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    word-spacing: 0px;
+    color:navy
 }
