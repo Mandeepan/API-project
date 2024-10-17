@@ -1,3 +1,8 @@
+/* All text set to underline by default should remove the underline*/
+* {
+    text-decoration: none !important;
+}
+
 /* Container for the grid using CSS Grid */
 .SpotTiles {
     display: grid;  
@@ -6,6 +11,7 @@
     padding: 20px;
     margin-left: 4%;
     margin-right:4%;
+    text-decoration: none;
 }
 
 /* Each item in the grid */
@@ -86,3 +92,6 @@
     font-size: 0.8rem;
     color: #333;
 }
+
+
+
