@@ -44,7 +44,37 @@ export const getSpotDetailThunk = (spotId) => async (dispatch) => {
     }
 };
 
-const initialStates ={spotsState:{},spotDetailState:{}}
+//create a new spot
+const CREATE_SPOT ='spots/CREATE_SPOT';
+export const createSpot =(spot) => {
+    return{
+        type: CREATE_SPOT,
+        payload : spot
+    }
+}
+export const createSpotThunk = (spot) => async (dispatch) => {
+    const options ={
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(spot)
+    }
+    const response = await csrfFetch('/api/spots', options);
+    try {
+        const newSpot = await response.json();
+		dispatch(createSpot(newSpot));
+		return newSpot;
+    } catch (err) {
+        let error ={Error: err}
+        const errRes= await error.json()
+        return errRes
+    }
+}
+
+
+
+const initialStates ={spotsState:{},spotDetailState:{},createSpotState:{}}
 
 export default function spotsReducer(state = initialStates, action) {
     switch (action.type) {
@@ -64,6 +94,12 @@ export default function spotsReducer(state = initialStates, action) {
 					[action.payload.id]: action.payload,
 				},
 			};
+        }
+        case CREATE_SPOT: {
+            return{
+                ...state,
+                createSpotState : action.payload
+            }
         }
         default: return state;
     }
