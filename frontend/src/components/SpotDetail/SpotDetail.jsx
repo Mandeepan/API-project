@@ -42,8 +42,9 @@ export default function SpotDetail(){
     nonPreviewImageURL = nonPreviewImageURL.slice(0, 4);
     let reviewWordText = spotDetail.numReviews >=2? 'Reviews' :'Review';
     const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
+    const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden";
 
-    const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden"
+
 
     return (
         <div className="spot-details">
@@ -72,14 +73,20 @@ export default function SpotDetail(){
                 {/* Callout Information Box */}
                 <div className="callout-info-box">
                     <div className="callout-info">
-                        <h3 className="price"><strong>${spotDetail.price.toLocaleString()} </strong> night</h3>
-                        <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
-                        <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
+                            <h3 className="price"><strong>${spotDetail.price.toLocaleString()} </strong> night</h3>
+                            <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
+                            <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
                     </div>
                     <button className="reserve-button" onClick={handleReserveClick}>Reserve</button>
                 </div>
             </div>
-            <Reviews spotId={spotId} />
+            <div className="review-section">
+                <div className="review-star-summary">
+                            <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
+                            <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
+                </div>
+                <Reviews spotId={spotId} />
+            </div>
         </div>
 
     )

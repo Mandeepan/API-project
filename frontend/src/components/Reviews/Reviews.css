@@ -1,3 +1,29 @@
 .review-host-header{
-    border: 2px red solid;
+    margin-bottom: 0.5rem;
+    display:flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.review-user-name{
+    font-size: 0.9rem;
+    font-family: monospace;
+    margin: 2px 0px 2px 0px;
+}
+
+.review-date{
+    color: darkgray;
+    font-size: 0.9rem;
+    font-family: monospace;
+    margin: 2px 0px 2px 0px;
+}
+
+.review-text{
+    font-size: 0.7rem;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 2px 0px 2px 0px;
+}
+
+.review-needed-text{
+    font-size: 1.5rem;
 }

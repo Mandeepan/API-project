@@ -120,3 +120,36 @@ color: #555;
 .reserve-button:hover {
 background-color: #C70039;
 }
+
+.review-section{
+    display: flex;
+    flex-direction: column;
+    border-top: 2px darkgray solid;
+}
+
+.review-star-summary{
+    display:flex;
+    flex-direction: row;
+    width :50%;
+    height: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem
+}
+
+.review-star-summary .average-rating {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    padding-right: 0.5rem
+}
+
+.review-star-summary .review-count {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.5rem;
+}
+
+.review-star-summary .review-count-hidden{
+    display: none;
+}
+

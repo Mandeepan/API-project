@@ -12,6 +12,10 @@ import {getReviewsThunk} from '../../store/reviews';
 export default function Reviews({spotId}){
     const dispatch =useDispatch();
     const reviews = useSelector((state) => state.reviews.reviewsState);
+    const sessionUser = useSelector((state) => state.session.user);
+    const spot = useSelector((state) => state.spots.spotDetailState[spotId])
+
+
  
     useEffect(() => {
 		dispatch(getReviewsThunk(spotId));
@@ -23,17 +27,28 @@ export default function Reviews({spotId}){
         return <h1>{reviews.message}</h1> 
     }
 
+    console.log('+++++++++ REVIEWS ++++++++++');
+    console.log(reviews)
+    console.log('+++++++++ CURRENT USERS ++++++++++');
+    console.log(sessionUser)
+    console.log('+++++++++ SPOT ++++++++++');
+    console.log(spot)
+
     return (
         <div className="reviews-container">
-            {console.log({reviews})}
-            {reviews.length > 0 ? (reviews.map((eachReview,i) => (
+            {reviews.length > 0 ? (reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((eachReview,i) => (
                     <div className='review-host-header' key={i}>
-                        <p>TO BE ADDED</p>
-                        <h1>{eachReview.review}</h1>
+                        <h3 className="review-user-name">{eachReview.User? eachReview.User.firstName : "Anonymous User"}</h3>
+                        <p className="review-date">{new Date(eachReview.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
+                        <p className='review-text'>{eachReview.review}</p>
                     </div> 
             ))
             ):(
-                <p> TO BE EDITED : FIRST ONE TO REVIEW</p>
+                sessionUser && sessionUser.id!==spot.Owner.id ?(
+                    <h3 className="review-needed-text">Be the first to post a review!</h3>
+                ) : (
+                    <h3 className="review-needed-text">No reviews yet.</h3>
+                )
             )
             }
         </div>
