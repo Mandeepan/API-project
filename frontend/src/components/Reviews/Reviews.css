@@ -27,3 +27,17 @@
 .review-needed-text{
     font-size: 1.5rem;
 }
+
+.deleteButtonClassName{
+    display: block;
+    width:max-content;
+    padding:5px 10px;
+    color: white !important;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px 2px #555 ;
+    background-color: #b5264e;
+}

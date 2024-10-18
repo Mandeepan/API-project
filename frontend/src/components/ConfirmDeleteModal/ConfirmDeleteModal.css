@@ -1,0 +1,19 @@
+.delete-modal-container{
+    border: 5px black solid;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+}
+
+.delete-modal-container > h1{
+    font-size:2rem;
+    margin : 1rem 5rem;
+}
+
+
+.delete-yes, .delete-no {
+    margin:5px;
+    padding:5px 10px;
+    width: 10rem
+}

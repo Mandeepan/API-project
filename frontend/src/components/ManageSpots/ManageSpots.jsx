@@ -7,7 +7,8 @@ import { useEffect } from 'react';
 import {getUserSpotsThunk} from '../../store/spots';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
-
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem' ;
+import ConfirmDeleteModal from '../ConfirmDeleteModal/ConfirmDeleteModal';
 
 
 
@@ -85,7 +86,13 @@ export default function ManageSpots(){
                     </NavLink>
                     <div className="update-delete-button" key={i}>
                         <button className="update-button" onClick={(e)=> handleUpdate(e,spot.id)}>Update</button>
-                        <button className="delete-button">Delete</button>
+                        <button className="delete-button">
+                        <OpenModalMenuItem
+                            className="delete-spot-modal"
+                            itemText="Delete"
+                            modalComponent={<ConfirmDeleteModal itemToDelete={"SPOT"}/>}
+                            />
+                        </button>
                     </div>
                 </div>
                 )}
