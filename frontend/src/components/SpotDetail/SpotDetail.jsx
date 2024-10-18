@@ -99,7 +99,7 @@ export default function SpotDetail(){
                 <OpenModalMenuItem
                     className="review-modal"
                     itemText="Post Your Review"
-                    modalComponent={<ReviewFormModal />}
+                    modalComponent={<ReviewFormModal spotId={spotId} />}
                     />
                 </button>
                 

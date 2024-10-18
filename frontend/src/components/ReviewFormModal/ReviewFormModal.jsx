@@ -1,11 +1,14 @@
 import { useModal } from '../../context/ModalContext/Modal'
 import { FaStar } from 'react-icons/fa';
 import {useEffect, useState} from 'react'
-import './ReviewFormModal.css'
+import './ReviewFormModal.css';
+import { createReviewThunk } from '../../store/reviews';
+import { useDispatch } from 'react-redux';
 
 export default function ReviewFormModal ({spotId}){
+    const dispatch =useDispatch();
     const [hoverValue, setHoverValue] = useState(0);
-    const [selectedValue, setSelectedValue] = useState(0);
+    const [selectedValue, setSelectedValue] = useState(0); // star selected value
     const [reviewContent, setReviewContent]=useState("")
     const [errors, setErrors] = useState({});
 
@@ -29,7 +32,7 @@ export default function ReviewFormModal ({spotId}){
     
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// await dispatch(addAReview({ review, stars }, spotId));
+		await dispatch(createReviewThunk({review: reviewContent,stars:selectedValue }, spotId));
 		closeModal();
 	};
 
@@ -63,7 +66,7 @@ export default function ReviewFormModal ({spotId}){
             <label><strong> Stars</strong></label>
          </div>
          {errors.stars && <p className='error'>{errors.stars}</p>}
-         <button className="review-submit-button" onClick={closeModal} disabled={reviewContent.length<10 || !selectedValue}>Submit Your Review</button>
+         <button type="submit" className="review-submit-button"  disabled={reviewContent.length<10 || !selectedValue}>Submit Your Review</button>
     </form> 
     )
 
