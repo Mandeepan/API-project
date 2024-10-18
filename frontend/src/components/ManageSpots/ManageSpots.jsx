@@ -13,9 +13,16 @@ import PageNotFound from '../PageNotFound';
 
 
 function ManageSpotTileItem({ spot }) {
+
+    console.log('=======avgRating======')
+    console.log(spot.avgRating)
+    console.log(typeof(spot.avgRating))
+    
     const averageRatingFormatted = typeof spot.avgRating === 'number' && !isNaN(spot.avgRating)
     ? spot.avgRating.toFixed(1)
     : "New";
+
+
     
     return (
         <div className="SpotTileItemNoButton">
