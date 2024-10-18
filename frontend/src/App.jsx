@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import SpotTiles from './components/SpotTiles';
 import SpotDetail from './components/SpotDetail/SpotDetail';
 import SpotFormPage from './components/SpotFormPage/SpotFormPage';
+import PageNotFound from './components/PageNotFound';
 
 function Layout() {
   const dispatch = useDispatch();
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
         element:<SpotFormPage />
       }
     ]
+  },
+  {
+    path:"/*",
+    element: <PageNotFound />
   }
 ]);
 
