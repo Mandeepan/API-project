@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {getUserSpotsThunk} from '../../store/spots';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
 
 
@@ -45,6 +45,7 @@ function ManageSpotTileItem({ spot }) {
 
 export default function ManageSpots(){
     const dispatch =useDispatch();
+    const navigate =useNavigate();
     const spots = useSelector((state) => Object.values(state.spots.spotsState));
  
     useEffect(() => {
@@ -55,6 +56,10 @@ export default function ManageSpots(){
         return <PageNotFound />
     }
 
+    const handleUpdate=(e, spotId)=>{
+        e.stopPropagation();
+        navigate(`/spots/${spotId}/edit`);
+    }
 
 
     return (
@@ -70,7 +75,7 @@ export default function ManageSpots(){
                         <ManageSpotTileItem spot={spot} />
                     </NavLink>
                     <div className="update-delete-button" key={i}>
-                        <button className="update-button">Update</button>
+                        <button className="update-button" onClick={(e)=> handleUpdate(e,spot.id)}>Update</button>
                         <button className="delete-button">Delete</button>
                     </div>
                 </div>
