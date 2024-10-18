@@ -58,3 +58,9 @@
     border-radius: 5px;
     box-shadow: 2px 2px 2px grey;
 }
+
+.review-submit-button:disabled {
+    background-color: grey; /* Darker color for disabled state */
+    cursor: not-allowed; /* Show a not-allowed cursor when disabled */
+    opacity: 0.7; /* Slightly reduce opacity to make it look disabled */
+  }
