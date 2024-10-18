@@ -21,6 +21,20 @@ export const getSpotsThunk = () => async (dispatch) => {
     }
 };
 
+//get all the spots for current user ( no need to create another action and subpiece in reducer)
+export const getUserSpotsThunk = () => async (dispatch) => {
+	const response = await csrfFetch('/api/spots/current');
+	try {
+        const spots = await response.json();
+		dispatch(getSpots(spots));
+		return spots;
+    } catch (err) {
+        let error ={Error: err}
+        const errRes= await error.json()
+        return errRes
+    }
+};
+
 //get spot by spotId : for spot detail page
 const GET_SPOT_DETAIL = 'spots/GET_SPOT_DETAIL';
 export const getSpotDetail = (spotDetail) => {
@@ -97,6 +111,7 @@ export const addSpotImageThunk = (spotId, image) => async (dispatch) => {
         return errRes
     }
 }
+
 
 
 

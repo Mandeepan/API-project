@@ -1,0 +1,134 @@
+/* All text set to underline by default should remove the underline*/
+* {
+    text-decoration: none !important;
+}
+
+/* Container for the grid using CSS Grid */
+.SpotTiles {
+    display: grid;  
+    grid-template-columns:repeat(4, 1fr);;  
+    gap: 20px;  
+    padding: 20px;
+    margin-left: 4%;
+    margin-right:4%;
+    text-decoration: none;
+}
+
+/* Each item in the grid */
+.SpotTileItem {
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.SpotTileItem:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Wrapper for the image */
+.SpotImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.SpotImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.SpotTooltip {
+    visibility: hidden;                   
+    background-color: rgba(0, 0, 0, 0.8);  
+    color: #fff;                           
+    text-align: center;                    
+    border-radius: 4px;                    
+    padding: 8px 12px;                    
+    position: absolute;                       
+    top: 50%;                              
+    left: 50%;                             
+    transform: translate(-50%, -50%);      
+    white-space: nowrap;                   
+    z-index: 1000;                         
+    opacity: 0;                            
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;  
+}
+
+/* Show the tooltip when hovering over the image wrapper */
+.SpotImageWrapper:hover .SpotTooltip {
+    visibility: visible;  /* Make the tooltip visible */
+    opacity: 1;           /* Fade in the tooltip */
+}
+
+/* Description container */
+.SpotTileItemDescription {
+    padding: 15px;
+}
+
+/* First row with city/state and star rating */
+.SpotTileItemFirstRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.SpotTileItemFirstRow div {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+.SpotTileItemStarRating {
+    font-size: 0.8rem;
+}
+
+/* Price styling in the second row */
+.SpotTileItemPrice {
+    font-size: 0.8rem;
+    color: #333;
+}
+
+
+/*ABOVE ARE THE STYLES FOR MAIN SPOT TILE PAGE*/
+/*BELOW ARE THE STYLES FOR MANAGE SPOT PAGE ONLY*/
+
+
+
+.manage-spot-header{
+    display: flex;  
+    flex-direction: column; 
+    padding: 20px;
+    margin-left: 4%;
+    margin-right:4%;
+}
+
+#header-button{
+    display: block;
+    width:max-content;
+    padding: 20px;
+    color: white !important;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px 2px #555 ;
+    background-color: #b5264e;
+}
+
+.update-delete-button{
+    display: flex;
+    flex-direction: row;
+    justify-content:start;
+    padding:20px;
+}
+
+.update-delete-button > *{
+    margin-left:10px;
+    padding:5px 10px;
+}
