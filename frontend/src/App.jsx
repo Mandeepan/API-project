@@ -9,6 +9,8 @@ import SpotTiles from './components/SpotTiles';
 import SpotDetail from './components/SpotDetail/SpotDetail';
 import SpotFormPage from './components/SpotFormPage/SpotFormPage';
 import PageNotFound from './components/PageNotFound';
+import ManageSpots from './components/ManageSpots/ManageSpots';
+
 
 function Layout() {
   const dispatch = useDispatch();
@@ -43,7 +45,11 @@ const router = createBrowserRouter([
       {
         path:'/spots/new',
         element:<SpotFormPage />
-      }
+      },
+      {
+				path: '/spots/current',
+				element: <ManageSpots />,
+			},
     ]
   },
   {

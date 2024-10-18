@@ -21,7 +21,7 @@ export default function SpotTiles(){
     
     return <>
         <div className="SpotTiles">
-            {spots.map((spot, i) =>
+            {spots.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((spot, i) =>
                 <NavLink key={i} to={`/spots/${spot.id}`}>
                     <SpotTileItem spot={spot} />
                 </NavLink>)
