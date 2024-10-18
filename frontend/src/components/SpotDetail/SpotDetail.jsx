@@ -36,22 +36,26 @@ export default function SpotDetail(){
     const defaultUrl ="/images/sampleSpotImage.png"; 
     let previewImageURL = defaultUrl;
     let nonPreviewImageURL = [defaultUrl,defaultUrl,defaultUrl,defaultUrl];
-    spotDetail.SpotImages.forEach(img => {
-        if (img.preview) {
-            previewImageURL=img.url
-        } else {
-            nonPreviewImageURL.unshift(img.url)
-        }
-    })
+    if (spotDetail && spotDetail.SpotImages) {
+        spotDetail.SpotImages.forEach(img => {
+            if (img.preview) {
+                previewImageURL=img.url
+            } else {
+                nonPreviewImageURL.unshift(img.url)
+            }
+        })
+    }
     nonPreviewImageURL = nonPreviewImageURL.slice(0, 4);
     let reviewWordText = spotDetail.numReviews >=2? 'Reviews' :'Review';
     const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
     const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden";
 
     let isReviewOwner =false ;
-    reviews.forEach(review => {
-        if (review.userId === sessionUser.id) {isReviewOwner=true}
-    })
+    if (reviews) { 
+        reviews.forEach(review => {
+            if (review.userId === sessionUser.id) {isReviewOwner=true}
+        })
+    }
     const isSpotOwner = sessionUser.id=== spotDetail.ownerId
     let postReviewClassName = 'post-review-button-hidden';
     if (sessionUser && !isSpotOwner && !isReviewOwner) { postReviewClassName='post-review-button'}
@@ -77,7 +81,7 @@ export default function SpotDetail(){
             <div className="description-callout-container">
                 {/* Description Section */}
                 <div className="spot-description">
-                    <h3>Hosted by {spotDetail.Owner.firstName} {spotDetail.Owner.lastName}</h3>
+                    <h3>Hosted by {spotDetail.Owner?.firstName} {spotDetail.Owner?.lastName}</h3>
                     <p>{spotDetail.description}</p>
                 </div>
                 {/* Callout Information Box */}

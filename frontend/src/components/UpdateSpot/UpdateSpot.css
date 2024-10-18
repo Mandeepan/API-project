@@ -1,0 +1,92 @@
+
+.create-spot-form-container {
+    max-width: 50%; 
+    width: 100%; 
+    margin: 0% auto;
+    padding: 20px; 
+    position: relative; 
+    top: 0px; 
+    /* Height and scroll settings */
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+input {
+    border: 1px black solid;
+    height: 2em;
+    border-radius: 5px;
+}
+
+.form-title{
+    margin-top:2px;
+}
+
+.section{
+    border-bottom :3px darkgrey solid ;
+    padding-bottom: 5%;
+}
+
+.section-header{
+    display:flex;
+    flex-direction: column;
+}
+
+.section-header > * {
+    margin: 2px;
+}
+
+.section-header > p {
+    padding-bottom: 10px;
+    font-size: 0.8rem;
+}
+
+.row-constrainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.description-input{
+    height: 8rem;
+}
+
+.description-input::placeholder {
+    text-align: left; 
+    vertical-align: top;
+    padding-top: 0px;
+}
+
+
+.price-row{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-row > *{
+    padding: 0px 20px;
+    height: 2em
+}
+
+.create-spot-submit-button{
+    display: block; 
+    margin: 20px auto; 
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.error{
+    color:red;
+    font-style: italic;
+    font-size:0.8rem;
+    padding-top:0;
+    margin-top:0;
+}
+
+/*ABOVE ARE THE STYLES FOR CREATE SPOT PAGE*/
+/*BELOW ARE THE STYLES FOR UPDATE SPOT PAGE*/
+

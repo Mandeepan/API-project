@@ -63,10 +63,6 @@ export default function SpotFormPage(){
 		};
 
         const newSpotResponse = await dispatch(createSpotThunk(newSpot));
-        
-        console.log('=========NEW SPOT CREATED============');
-        console.log(newSpotResponse)
-        console.log(`IS ARRAY : ${Array.isArray(newSpotResponse)}`);
 
 
         //if backend process failed, return a 404 Page Not Found page

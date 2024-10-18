@@ -112,6 +112,31 @@ export const addSpotImageThunk = (spotId, image) => async (dispatch) => {
     }
 }
 
+//update a spot
+const UPDATE_SPOT = 'spots/UPDATE_SPOT';
+// UPDATE A SPOT
+const updateSpot = (spot) => ({
+	type: UPDATE_SPOT,
+	payload: spot,
+});
+export const updateSpotThunk = (spotId, spotData) => async (dispatch) => {
+    try{
+        const response = await csrfFetch(`/api/spots/${spotId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(spotData),
+        });
+        const updatedSpot = await response.json();
+		dispatch(updateSpot(updatedSpot));
+		return updatedSpot;
+    }catch(err) {
+        let error ={Error: err}
+        const errRes= await error.json()
+        return errRes
+    }
+};
 
 
 
@@ -149,6 +174,20 @@ export default function spotsReducer(state = initialStates, action) {
 				spot.images = spot.images || [];
 				spot.images.push(action.image);
 			}
+			return newState;
+		}
+        case UPDATE_SPOT: {
+			const newState = {
+				...state,
+				spotsState: {
+					...state.spotsState,
+					[action.payload.id]: action.payload,
+				},
+				spotDetailState: {
+					...state.spotDetailState,
+					[action.payload.id]: action.payload,
+				}
+			};
 			return newState;
 		}
         default: return state;

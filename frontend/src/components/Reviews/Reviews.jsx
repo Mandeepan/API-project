@@ -37,7 +37,7 @@ export default function Reviews({spotId}){
                     </div> 
             ))
             ):(
-                sessionUser && sessionUser.id!==spot.Owner.id ?(
+                sessionUser && spot?.Owner &&sessionUser.id!==spot.Owner.id ?(
                     <h3 className="review-needed-text">Be the first to post a review!</h3>
                 ) : (
                     <h3 className="review-needed-text">No reviews yet.</h3>
