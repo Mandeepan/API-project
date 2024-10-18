@@ -5,19 +5,16 @@ import { FaStar } from "react-icons/fa";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {getUserSpotsThunk} from '../../store/spots';
+import {deleteSpotThunk} from '../../store/spots';
 import { NavLink, useNavigate } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem' ;
+// import OpenModalMenuItem from '../Navigation/OpenModalMenuItem' ;
 import ConfirmDeleteModal from '../ConfirmDeleteModal/ConfirmDeleteModal';
-
+import { useModal } from '../../context/ModalContext/Modal';
 
 
 
 function ManageSpotTileItem({ spot }) {
-
-    console.log('=======avgRating======')
-    console.log(spot.avgRating)
-    console.log(typeof(spot.avgRating))
     
     const averageRatingFormatted = typeof spot.avgRating === 'number' && !isNaN(spot.avgRating)
     ? spot.avgRating.toFixed(1)
@@ -57,6 +54,7 @@ export default function ManageSpots(){
     const dispatch =useDispatch();
     const navigate =useNavigate();
     const spots = useSelector((state) => Object.values(state.spots.spotsState));
+    const { setModalContent, closeModal } = useModal();
  
     useEffect(() => {
 		dispatch(getUserSpotsThunk());
@@ -71,6 +69,20 @@ export default function ManageSpots(){
         navigate(`/spots/${spotId}/edit`);
     }
 
+    const handleDelete =(spotId) =>{
+        setModalContent(
+			<ConfirmDeleteModal
+				onConfirm={() => {
+					dispatch(deleteSpotThunk(spotId)).then(() => {
+						closeModal();
+					});
+				}}
+				onCancel={() => {
+					closeModal();
+				}}
+			/>
+		);
+    }
 
     return (
         <div className="manage-spot-container">
@@ -86,12 +98,12 @@ export default function ManageSpots(){
                     </NavLink>
                     <div className="update-delete-button" key={i}>
                         <button className="update-button" onClick={(e)=> handleUpdate(e,spot.id)}>Update</button>
-                        <button className="delete-button">
-                        <OpenModalMenuItem
-                            className="delete-spot-modal"
-                            itemText="Delete"
-                            modalComponent={<ConfirmDeleteModal itemToDelete={"SPOT"}/>}
-                            />
+                        <button className="delete-button" 
+                                onClick={(e) => {
+										e.stopPropagation();
+										handleDelete(spot.id);
+									}}>
+                            Delete
                         </button>
                     </div>
                 </div>

@@ -138,7 +138,25 @@ export const updateSpotThunk = (spotId, spotData) => async (dispatch) => {
     }
 };
 
-
+//delete a spot
+const DELETE_SPOT = 'spots/DELETE_SPOT';
+const deleteSpot = (spotId) => ({
+	type: DELETE_SPOT,
+	spotId,
+});
+export const deleteSpotThunk = (spotId) => async (dispatch) => {
+    try{
+        const response = await csrfFetch(`/api/spots/${spotId}`, {
+            method: 'DELETE',
+        });
+        dispatch(deleteSpot(spotId));
+    }catch(err) {
+        let error ={Error: err}
+        const errRes= await error.json()
+        return errRes
+    }
+	
+};
 
 const initialStates ={spotsState:{},spotDetailState:{},createSpotState:{}}
 
@@ -188,6 +206,12 @@ export default function spotsReducer(state = initialStates, action) {
 					[action.payload.id]: action.payload,
 				}
 			};
+			return newState;
+		}
+        case DELETE_SPOT: {
+			const newState = { ...state };
+			delete newState.spotsState[action.spotId];
+			delete newState.spotDetailState[action.spotId];
 			return newState;
 		}
         default: return state;
