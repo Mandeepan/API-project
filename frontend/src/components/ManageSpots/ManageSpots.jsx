@@ -13,8 +13,10 @@ import PageNotFound from '../PageNotFound';
 
 
 function ManageSpotTileItem({ spot }) {
-    const averageRatingFormatted = spot.avgRating ? spot.avgRating.toFixed(1) : "New";
-
+    const averageRatingFormatted = typeof spot.avgRating === 'number' && !isNaN(spot.avgRating)
+    ? spot.avgRating.toFixed(1)
+    : "New";
+    
     return (
         <div className="SpotTileItemNoButton">
             <div className="SpotImageWrapper">
