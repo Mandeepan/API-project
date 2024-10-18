@@ -72,6 +72,7 @@ export default function ManageSpots(){
     const handleDelete =(spotId) =>{
         setModalContent(
 			<ConfirmDeleteModal
+                itemToDelete={"SPOT"}
 				onConfirm={() => {
 					dispatch(deleteSpotThunk(spotId)).then(() => {
 						closeModal();

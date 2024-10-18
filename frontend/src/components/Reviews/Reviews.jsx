@@ -1,17 +1,15 @@
 import './Reviews.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { FaStar } from "react-icons/fa";
-// import { FaHashtag } from "react-icons/fa";
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem' ;
 import ConfirmDeleteModal from '../ConfirmDeleteModal/ConfirmDeleteModal';
+import { useModal } from '../../context/ModalContext/Modal';
 
 import PageNotFound from '../PageNotFound';
-import {getReviewsThunk} from '../../store/reviews';
+import {getReviewsThunk, deleteReviewThunk} from '../../store/reviews';
 
 export default function Reviews({spotId}){
     const dispatch =useDispatch();
+    const { setModalContent, closeModal } = useModal();
     const reviews = useSelector((state) => state.reviews.reviewsState);
     const sessionUser = useSelector((state) => state.session.user);
     const spot = useSelector((state) => state.spots.spotDetailState[spotId])
@@ -27,6 +25,21 @@ export default function Reviews({spotId}){
     } else if (reviews.message) {
         return <h1>{reviews.message}</h1> 
     }
+    
+    const handleDelete = (reviewId) => {
+        setModalContent(
+			<ConfirmDeleteModal
+            itemToDelete={"REVIEW"}
+				onConfirm={() => {
+					dispatch(deleteReviewThunk(reviewId)).then(() => {
+						closeModal();
+					});
+				}}
+				onCancel={closeModal}
+			/>
+		);
+    }
+
 
 
     // const deleteButtonClassName = (sessionUser && sessionUser.id===eachReview.User.id? 'delete-review-button' :'delete-review-button-hidden')
@@ -38,12 +51,13 @@ export default function Reviews({spotId}){
                         <p className="review-date">{new Date(eachReview.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
                         <p className='review-text'>{eachReview.review}</p>
                         {sessionUser && sessionUser.id===eachReview.User.id &&
-                            <button className='deleteButtonClassName'>
-                                <OpenModalMenuItem
-                                className="delete-review-modal"
-                                itemText="Delete"
-                                modalComponent={<ConfirmDeleteModal itemToDelete={"REVIEW"}/>}
-                                />
+                            <button className='deleteButtonClassName'
+                                    onClick={(e) =>{
+                                        e.stopPropagation;
+                                        handleDelete(eachReview.id)
+                                    }}
+                                    >
+                                Delete
                             </button>
                         }
                     </div> 

@@ -150,6 +150,7 @@ export const deleteSpotThunk = (spotId) => async (dispatch) => {
             method: 'DELETE',
         });
         dispatch(deleteSpot(spotId));
+        return response;
     }catch(err) {
         let error ={Error: err}
         const errRes= await error.json()

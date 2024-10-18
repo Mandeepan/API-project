@@ -52,6 +52,21 @@ export const createReviewThunk = (review, spotId) => async (dispatch) => {
     
 };
 
+//delete review
+const DELETE_REVIEW = 'reviews/DELETE_REVIEW';
+const deleteReview = (reviewId) => ({
+	type: DELETE_REVIEW,
+	reviewId,
+});
+export const deleteReviewThunk = (reviewId) => async (dispatch) => {
+	const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+		method: 'DELETE',
+	});
+	if (response.ok) {
+		dispatch(deleteReview(reviewId));
+	}
+};
+
 const initialStates ={reviewsState:[]}
 
 export default function reviewsReducer(state = initialStates, action) {
@@ -62,6 +77,14 @@ export default function reviewsReducer(state = initialStates, action) {
         case CREATE_REVIEW:{
             return { ...state, reviewsState: [...state.reviewsState, action.payload] };
         }
+        case DELETE_REVIEW: {
+			return {
+				...state,
+				reviewsState: state.reviewsState.filter(
+					(review) => review.id !== action.reviewId
+				),
+			};
+		}
         default: return state;
     }
 }
