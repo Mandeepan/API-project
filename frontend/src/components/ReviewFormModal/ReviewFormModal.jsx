@@ -17,15 +17,13 @@ export default function ReviewFormModal ({spotId}){
 
     useEffect(()=>{
         const newErrors = {};
-		if (reviewContent && reviewContent.length < 10)
-			newErrors.review = 'Review must be at least 10 characters long';
-		if (hoverValue !==0 && selectedValue < 1 )
+		if (reviewContent.length>0 && reviewContent.length < 10) {
+            newErrors.review = 'Review must be at least 10 characters long'
+        }
+		if (hoverValue !==0 && selectedValue < 1 ) {
 			newErrors.stars = 'Stars must be between 1 and 5';
-
-		if (Object.keys(newErrors).length > 0) {
-			setErrors(newErrors);
-			return;
-		}
+        }
+        setErrors(newErrors);
     }, [reviewContent,selectedValue])
 
     

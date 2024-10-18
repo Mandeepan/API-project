@@ -9,11 +9,6 @@ export const getReviews = (reviews) => {
 	};
 };
 export const getReviewsThunk = (spotId) => async (dispatch) => {
-    // console.log("==========REVIEW THUNK==========")
-    // console.log(spotId)
-    // let spotIdString = spotId;
-    // if (typeof(spotId)!=='string') spotIdString=spotId.toString();
-    // const response = await csrfFetch(`/api/spots/1/reviews`);
 	const response = await csrfFetch(`/api/spots/${spotId}/reviews`);
 	try {
         const reviews = await response.json();
@@ -25,6 +20,9 @@ export const getReviewsThunk = (spotId) => async (dispatch) => {
         return errRes
     }
 };
+
+
+
 
 const initialStates ={reviewsState:[]}
 
