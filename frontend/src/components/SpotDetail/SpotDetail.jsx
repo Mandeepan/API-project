@@ -9,8 +9,8 @@ import {getSpotDetailThunk} from '../../store/spots';
 import PageNotFound from '../PageNotFound';
 import Reviews from '../Reviews';
 
-// import OpenModalMenuItem from './OpenModalMenuItem';
-// import ReviewFormModal from '../ReviewFormModal/ReviewFormModal';
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem'
+import ReviewFormModal from '../ReviewFormModal/ReviewFormModal'
 
 export default function SpotDetail(){
     const dispatch =useDispatch();
@@ -95,12 +95,14 @@ export default function SpotDetail(){
                             <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
                             <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
                 </div>
-                <button className={postReviewClassName}>Post Your Review</button>
-                {/* <OpenModalMenuItem
-                    className={postReviewClassName}
+                <button className={postReviewClassName}>
+                <OpenModalMenuItem
+                    className="review-modal"
                     itemText="Post Your Review"
                     modalComponent={<ReviewFormModal />}
-                    /> */}
+                    />
+                </button>
+                
                 <Reviews spotId={spotId} />
             </div>
         </div>
