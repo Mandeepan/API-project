@@ -64,3 +64,8 @@
     cursor: not-allowed; /* Show a not-allowed cursor when disabled */
     opacity: 0.7; /* Slightly reduce opacity to make it look disabled */
   }
+
+.error{
+    color: red;
+    font-style: italic;
+}
