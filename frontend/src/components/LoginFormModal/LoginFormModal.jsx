@@ -40,7 +40,7 @@ function LoginFormModal() {
     const disableLogInButton = credential.length < 4 || password.length < 6
     
     return (
-    <div className='login-modal'>
+    <div className='login-modal' data-testid='login-modal'>
         <h1 className='login-header-text'>Log In</h1>
         <form onSubmit={handleSubmit} className='login-modal-input'>
             <label>
@@ -48,6 +48,7 @@ function LoginFormModal() {
                 <input
                 type="text"
                 value={credential}
+                data-testid='credential-input'
                 onChange={(e) => setCredential(e.target.value)}
                 required
                 />
@@ -57,6 +58,7 @@ function LoginFormModal() {
                 <input
                 type="password"
                 value={password}
+                data-testid='password-input'
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 />
@@ -64,8 +66,8 @@ function LoginFormModal() {
             {errors.credential && (
                 <p>{errors.credential}</p>
             )}
-            <button type="submit" className='login-button' disabled={disableLogInButton} >Log In</button>
-            <a onClick={handleDemoUserSubmit} className="demo-user-tag">Log in as Demo User</a>
+            <button type="submit" className='login-button' disabled={disableLogInButton} data-testid='login-button'  >Log In</button>
+            <a onClick={handleDemoUserSubmit} className="demo-user-tag" data-testid='demo-user-login' >Log in as Demo User</a>
         </form>
     </div>
     );

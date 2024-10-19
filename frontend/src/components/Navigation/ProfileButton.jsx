@@ -42,10 +42,10 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={toggleMenu} className='header-right-button'>
+      <button onClick={toggleMenu} className='header-right-button' data-testid='user-menu-button'>
         <FaUserCircle />
       </button>
-      <ul className={ulClassName} ref={ulRef}>
+      <ul className={ulClassName} ref={ulRef} data-testid='user-dropdown-menu'>
         {user ? (
           <>
             <p>Hello, {user.firstName}</p>

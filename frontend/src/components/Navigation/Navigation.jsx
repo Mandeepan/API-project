@@ -12,7 +12,7 @@ function Navigation({ isLoaded }) {
     <ul className='header-list'>
         <li>
         <NavLink to="/" className='logo-area'>
-            <img src="/images/logo.svg" alt="Company Logo" className="logo-image" />
+            <img src="/images/logo.svg" alt="Company Logo"  data-testid="logo" className="logo-image" />
             GoVocay
         </NavLink>
         </li>
