@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa";
 
 
 export default function SpotTileItem({ spot }) {
-    const averageRatingFormatted = spot.avgRating ? spot.avgRating.toFixed(1) : "New";
+    const averageRatingFormatted = spot.avgRating ? parseFloat(spot.avgRating).toFixed(1) : "New";
 
     return (
         <div className="SpotTileItem" data-testid='spot-tile'>

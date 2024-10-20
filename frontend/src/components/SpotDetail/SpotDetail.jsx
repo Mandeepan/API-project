@@ -47,7 +47,7 @@ export default function SpotDetail(){
     }
     nonPreviewImageURL = nonPreviewImageURL.slice(0, 4);
     let reviewWordText = spotDetail.numReviews >=2? 'Reviews' :'Review';
-    const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
+    const averageRatingFormatted = spotDetail.avgStarRating ? parseFloat(spotDetail.avgStarRating).toFixed(1) : "New";
     const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden";
 
     let postReviewClassName = 'post-review-button-hidden';
