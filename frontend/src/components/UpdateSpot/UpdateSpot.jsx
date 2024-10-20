@@ -81,7 +81,12 @@ export default function UpdateSpot(){
         
 
     const handleChange = (e) => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+        if (e.target.name ==='price') {
+            setFormData({ ...formData, [e.target.name]: Number(e.target.value) });
+        } else{
+            setFormData({ ...formData, [e.target.name]: e.target.value });
+        }
+		
 	};
 
 	useEffect(() => {
