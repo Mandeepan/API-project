@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useState , useEffect} from 'react';
 import { createSpotThunk } from "../../store/spots";
 import {addSpotImageThunk} from '../../store/spots';
-import PageNotFound from "../PageNotFound";
+// import PageNotFound from "../PageNotFound";
 
 export default function SpotFormPage(){
     const dispatch =useDispatch();
@@ -44,11 +44,17 @@ export default function SpotFormPage(){
 		if (!formData.image1) newErrors.image1 = 'Preview Image URL is required';
 		setErrors(newErrors);
 	}, [formData]);
-
+    
+   
 
     const handleSubmit = async (e) => {
 		e.preventDefault();
 		setHasSubmitted(true);
+        
+        // if front end errors persist, return with no action so it stays at the create spot form page
+        if (Object.keys(errors).length > 0) {
+			return;
+		}
 
         const newSpot = {
 			country: formData.country,
@@ -61,35 +67,39 @@ export default function SpotFormPage(){
             lat:'0.0000000',
             lng:'0.0000000', // placeholder : as this function will be developed after basic functions completed.
 		};
+        console.log('======hasSubmitted======')
+        console.log(hasSubmitted)
+        console.log('=====ERROR LOCAL STATE=====');
+        console.log(errors)
 
+        
         const newSpotResponse = await dispatch(createSpotThunk(newSpot));
-
+        console.log('=====BACKEND RESPSONSE=====');
+        console.log(newSpotResponse)
 
         //if backend process failed, return a 404 Page Not Found page
-        if (newSpotResponse.message) {
-            return <>
-                <PageNotFound />
-                <p>Failed to fetch from API due to</p>
-                <p>{newSpotResponse.message}</p>
-            </>
+        if (newSpotResponse.errors) {
+            await Promise.all( setErrors(...newSpotResponse.errors))
         }
 
         // update the image to the backend ReviewImage table
         if (newSpotResponse) {
-			const images = [
-				{ url: formData.image1, preview: true },
-				{ url: formData.image2, preview: false },
-				{ url: formData.image3, preview: false },
-				{ url: formData.image4, preview: false },
-				{ url: formData.image5, preview: false },
-			].filter((image) => image.url);
+            const images = [
+                { url: formData.image1, preview: true },
+                { url: formData.image2, preview: false },
+                { url: formData.image3, preview: false },
+                { url: formData.image4, preview: false },
+                { url: formData.image5, preview: false },
+            ].filter((image) => image.url);
 
-			await Promise.all(
-				images.map((image) => dispatch(addSpotImageThunk(newSpotResponse.id, image)))
-			);
-
-			navigate(`/spots/${newSpotResponse.id}`)
-		}
+            await Promise.all(
+                images.map((image) => dispatch(addSpotImageThunk(newSpotResponse.id, image)))
+            );
+            
+            navigate(`/spots/${newSpotResponse.id}`)
+        }
+        
+        
 
         
     }

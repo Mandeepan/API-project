@@ -58,7 +58,8 @@ function ProfileButton({ user }) {
                   borderBottom: "1px solid grey",
                   listStyle: "none",
                   padding: "5px",
-                  marginBottom: "5px"
+                  marginBottom: "5px",
+                  paddingLeft:"0"
                 }}>
                   <NavLink to="/spots/current" data-testid='manage-spots-link'>Manage Spots</NavLink></li>
             <li>
