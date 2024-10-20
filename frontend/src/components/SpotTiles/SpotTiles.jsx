@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import {getSpotsThunk} from '../../store/spots';
 import SpotTileItem from './SpotTileItem';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PageNotFound from '../PageNotFound';
 
 export default function SpotTiles(){
@@ -22,9 +22,9 @@ export default function SpotTiles(){
     return <>
         <div className="SpotTiles" data-testid='spots-list'>
             {spots.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((spot, i) =>
-                <NavLink key={i} to={`/spots/${spot.id}`} data-testid='spot-link'>
+                <Link key={i} to={`/spots/${spot.id}`} data-testid='spot-link'>
                     <SpotTileItem spot={spot} />
-                </NavLink>)
+                </Link>)
             }
         </div >
     </>

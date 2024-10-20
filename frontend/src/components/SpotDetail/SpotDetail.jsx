@@ -50,16 +50,19 @@ export default function SpotDetail(){
     const averageRatingFormatted = spotDetail.avgStarRating ? spotDetail.avgStarRating.toFixed(1) : "New";
     const noReviewClassName=spotDetail.numReviews? "review-count" : "review-count-hidden";
 
-    let isReviewOwner =false ;
-    if (reviews) { 
-        reviews.forEach(review => {
-            if (review.userId === sessionUser.id) {isReviewOwner=true}
-        })
-    }
-    const isSpotOwner = sessionUser.id=== spotDetail.ownerId
     let postReviewClassName = 'post-review-button-hidden';
-    if (sessionUser && !isSpotOwner && !isReviewOwner) { postReviewClassName='post-review-button'}
+    if (sessionUser) {
+        const isSpotOwner = sessionUser.id=== spotDetail.ownerId;
+        let isReviewOwner =false ;
+        if (reviews) { 
+            reviews.forEach(review => {
+                if (review.userId === sessionUser.id) {isReviewOwner=true}
+            })
+        }
+        if (!isSpotOwner && !isReviewOwner) { postReviewClassName='post-review-button'}
+    } 
 
+    
     return (
         <div className="spot-details" data-testid='spot-tile'>
             {/*header*/}
