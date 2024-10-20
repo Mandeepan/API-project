@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: 'https://img-v2.gtsstatic.net/reno/imagereader.aspx?url=https%3A%2F%2Fsir.azureedge.net%2F1103i215%2Fqf55hfmz1g194vekc5j4v6ema5i215&w=3840&q=75&option=N&permitphotoenlargement=false&fallbackimageurl=https%3A%2F%2Fwww.sothebysrealty.com%2Fassets%2Fimages%2Fcommon%2Fnophoto%2Flisting.jpg',
+        url: 'https://www.keyholdersinternational.com/assets/upload/68a59132a0f3c933121040022965b4a0.jpg',
         preview: true
       },
       {
@@ -58,7 +58,7 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: 'https://londonhousechicago.com/assets/uploads/general/Interior/LondonHouse%20Chicago%20Welcoming%20Entrance.jpg',
+        url: 'https://media.immo-facile.com/office8/vingt_paris/catalog/images/pr_p/5/2/9/6/0/7/3/8/52960738a.jpg?DATEMAJ=02/08/2023-14:37:30',
         preview: false
       },
       {
@@ -166,6 +166,10 @@ module.exports = {
         'https://cdn.floridadesign.com/wp-content/uploads/sites/137/2021/07/Venetian-Islands-home-photo-by-Paul-Stoppi-designed-byDunagan-Diverio_MHD17-2G.jpg',
         'https://images.squarespace-cdn.com/content/v1/54b30f27e4b07e1bade0f312/1428317526726-Q7LBI1GEG6A3VQE7EM0G/image-asset.jpeg',
         'https://st.hzcdn.com/simgs/pictures/soggiorni/classic-mansion-in-paris-spazio-progetto-img~3a51dab50bb4d74e_4-0126-1-6be2749.jpg',
+        'https://www.keyholdersinternational.com/assets/upload/68a59132a0f3c933121040022965b4a0.jpg',
+        'https://nt.global.ssl.fastly.net/binaries/content/gallery/website/national/regions/london/places/fenton-house-and-garden/library/exterior-view-fenton-house-garden-london-1083414.jpg',
+        'https://media.immo-facile.com/office8/vingt_paris/catalog/images/pr_p/5/2/9/6/0/7/3/8/52960738a.jpg?DATEMAJ=02/08/2023-14:37:30',
+        'https://media.houseandgarden.co.uk/photos/6673fbe18d71c33fd9523373/16:9/w_2560,h_1440,c_limit/H28_London_Warehouse_Lounge_01_L.jpg',
         'https://i.pinimg.com/736x/ec/fe/bc/ecfebc4cfe0d0c62a375c248325bd647.jpg',
         'https://www.kurashinity.com/en/column/img/traditional-japanese-houses/column_traditional-japanese-houses_02.jpg',
         'https://findingtimetowrite.wordpress.com/wp-content/uploads/2022/12/ffjapanwondertravelblog.jpg?w=400',
@@ -182,11 +186,7 @@ module.exports = {
         'https://pix8.agoda.net/hotelImages/232/2324690/2324690_17081313030055356747.jpg?ca=6&ce=1&s=1024x768',
         'https://t4.ftcdn.net/jpg/03/84/95/39/360_F_384953971_jFbTPaB32Fc66V7S3eguowrEvU90ILsr.jpg',
         'https://joshdotoligroup.com/wp-content/uploads/2023/07/How-to-Buy-a-Beach-House.jpeg',
-        'https://cf.bstatic.com/xdata/images/hotel/max1024x768/170000293.jpg?k=e3387a71da5de457637f275b591faf05cf3f59aede569a2ecea889f9804d4765&o=&hp=1',
-        'https://img-v2.gtsstatic.net/reno/imagereader.aspx?url=https%3A%2F%2Fsir.azureedge.net%2F1103i215%2Fqf55hfmz1g194vekc5j4v6ema5i215&w=3840&q=75&option=N&permitphotoenlargement=false&fallbackimageurl=https%3A%2F%2Fwww.sothebysrealty.com%2Fassets%2Fimages%2Fcommon%2Fnophoto%2Flisting.jpg',
-  'https://nt.global.ssl.fastly.net/binaries/content/gallery/website/national/regions/london/places/fenton-house-and-garden/library/exterior-view-fenton-house-garden-london-1083414.jpg',
-  'https://londonhousechicago.com/assets/uploads/general/Interior/LondonHouse%20Chicago%20Welcoming%20Entrance.jpg',
-  'https://media.houseandgarden.co.uk/photos/6673fbe18d71c33fd9523373/16:9/w_2560,h_1440,c_limit/H28_London_Warehouse_Lounge_01_L.jpg'
+        'https://cf.bstatic.com/xdata/images/hotel/max1024x768/170000293.jpg?k=e3387a71da5de457637f275b591faf05cf3f59aede569a2ecea889f9804d4765&o=&hp=1'
       ] }
     }, {});
   }
