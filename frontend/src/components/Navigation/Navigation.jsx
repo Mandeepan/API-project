@@ -9,29 +9,32 @@ function Navigation({ isLoaded }) {
     const sessionUser = useSelector(state => state.session.user);
 
     return (
-    <ul className='header-list'>
-        <li>
-        <NavLink to="/" className='logo-area'>
-            <img src="/images/logo.svg" alt="Company Logo"  data-testid="logo" className="logo-image" />
-            GoVocay
-        </NavLink>
-        </li>
-        <ul className="header-right">
-            {sessionUser && (
-            <li>
-                <NavLink to="/spots/new" className='create-spot-button'>
-                Create a New Spot
+        <div className="Nnavbar-wrapper">
+            <ul className='header-list'>
+                <li>
+                <NavLink to="/" className='logo-area'>
+                    <img src="/images/logo.svg" alt="Company Logo"  data-testid="logo" className="logo-image" />
+                    GoVocay
                 </NavLink>
-            </li>
-            )}
-            {isLoaded && (
-            <li>
-                <ProfileButton user={sessionUser} />
-            </li>
-            )}
-        </ul>
-        
-    </ul>
+                </li>
+                <ul className="header-right">
+                    {sessionUser && (
+                    <li>
+                        <NavLink to="/spots/new" className='create-spot-button' data-testid='create-new-spot-button'>
+                        Create a New Spot
+                        </NavLink>
+                    </li>
+                    )}
+                    {isLoaded && (
+                    <li>
+                        <ProfileButton user={sessionUser} />
+                    </li>
+                    )}
+                </ul>
+                
+            </ul>
+        </div>
+    
     );
 }
 

@@ -37,11 +37,11 @@ export default function ReviewFormModal ({spotId}){
 	};
 
     return (
-    <form className="create-review-form" onSubmit={handleSubmit}>
+    <form className="create-review-form" onSubmit={handleSubmit} data-testid='review-modal'>
          <h1 className="review-form-title">How was your stay?</h1>
          <input type='text' 
                 className="review-form-input" 
-                placeholder='Leave your review here'
+                placeholder='Leave your review here...'
                 value={reviewContent}
 				onChange={(e) => setReviewContent(e.target.value)}
                 required>
@@ -58,6 +58,7 @@ export default function ReviewFormModal ({spotId}){
                             className={`star ${value <= (hoverValue || selectedValue) ? 'filled' : 'empty'}`}
                             onMouseOver={() => handleMouseOver(value)}
                             onMouseLeave={handleMouseLeave}
+                            data-testid='review-star-clickable'
                             onClick={() => handleClick(value)}
                             />
                         );

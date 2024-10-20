@@ -60,7 +60,7 @@ function ProfileButton({ user }) {
                   padding: "5px",
                   marginBottom: "5px"
                 }}>
-                  <NavLink to="/spots/current">Manage Spots</NavLink></li>
+                  <NavLink to="/spots/current" data-testid='manage-spots-link'>Manage Spots</NavLink></li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>

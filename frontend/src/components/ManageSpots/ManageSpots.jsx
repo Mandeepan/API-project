@@ -86,10 +86,15 @@ export default function ManageSpots(){
     }
 
     return (
-        <div className="manage-spot-container">
+        <div className="manage-spot-container" data-testid='user-spots'>
             <div className="manage-spot-header">
                 <h1 className="page-title">Manage Spots</h1>
-                <NavLink className="manage-create-spot-button" id="header-button" to={`/spots/new`}>Create a New Spot</NavLink>
+                {/* <NavLink className="manage-create-spot-button" id="header-button" to={`/spots/new`}>Create a New Spot</NavLink> */}
+                <button className="manage-create-spot-button" id="header-button">
+                    <NavLink to={`/spots/new`} role="link">
+                        Create a New Spot
+                    </NavLink>
+                </button>
             </div>
             <div className="SpotTiles">
                 {spots.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((spot, i) =>

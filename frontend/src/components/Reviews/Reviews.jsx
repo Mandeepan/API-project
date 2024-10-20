@@ -44,13 +44,14 @@ export default function Reviews({spotId}){
 
     // const deleteButtonClassName = (sessionUser && sessionUser.id===eachReview.User.id? 'delete-review-button' :'delete-review-button-hidden')
     return (
-        <div className="reviews-container">
+        <div data-testid='review-form'>
+        <div className="reviews-container" data-testid='review-list'>
             {reviews.length > 0 ? (reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).map((eachReview,i) => (
-                    <div className='review-host-header' key={i}>
+                    <div className='review-host-header' key={i} data-testid='review-item'>
                         <h3 className="review-user-name">{eachReview.User? eachReview.User.firstName : "Anonymous User"}</h3>
-                        <p className="review-date">{new Date(eachReview.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
-                        <p className='review-text'>{eachReview.review}</p>
-                        {sessionUser && sessionUser.id===eachReview.User.id &&
+                        <p className="review-date" data-testid='review-date'>{new Date(eachReview.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}</p>
+                        <p className='review-text' data-testid='review-text'>{eachReview.review}</p>
+                        {sessionUser && eachReview.User && sessionUser.id===eachReview.User.id &&
                             <button className='deleteButtonClassName'
                                     onClick={(e) =>{
                                         e.stopPropagation;
@@ -70,6 +71,7 @@ export default function Reviews({spotId}){
                 )
             )
             }
+        </div>
         </div>
     )
 

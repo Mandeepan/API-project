@@ -61,52 +61,57 @@ export default function SpotDetail(){
     if (sessionUser && !isSpotOwner && !isReviewOwner) { postReviewClassName='post-review-button'}
 
     return (
-        <div className="spot-details">
+        <div className="spot-details" data-testid='spot-tile'>
             {/*header*/}
-            <header className="spot-header">
-                <h1 className="spot-name">{spotDetail.name}</h1>
-                <p className="spot-location">{spotDetail.city}, {spotDetail.state}, {spotDetail.country}</p>
+            <header className="spot-header" >
+                <h1 className="spot-name" data-testid='spot-name'>{spotDetail.name}</h1>
+                <div  className="spot-location" data-testid='spot-location'>
+                    <p data-testid='spot-city'>{spotDetail.city}</p>
+                    <p> , {spotDetail.state}</p>
+                    <p> , {spotDetail.country}</p>
+                </div>
             </header>
             {/*image section*/}
             <div className="spot-images">
-                <div className="preview-image">
+                <div className="preview-image" data-testid='spot-large-image'>
                 <img src={previewImageURL} alt="Spot Preview" />
                 </div>
-                <div className="small-images">
+                <div className="small-images" >
                 {nonPreviewImageURL.slice(0, 4).map((imageUrl, index) => (
-                    <img key={index} src={imageUrl} alt={`Spot Image ${index + 1}`} className="small-image" />
+                    <img key={index} src={imageUrl} alt={`Spot Image ${index + 1}`} className="small-image" data-testid='spot-small-image'/>
                 ))}
                 </div>
             </div>
             <div className="description-callout-container">
                 {/* Description Section */}
                 <div className="spot-description">
-                    <h3>Hosted by {spotDetail.Owner?.firstName} {spotDetail.Owner?.lastName}</h3>
-                    <p>{spotDetail.description}</p>
+                    <h3 data-testid='spot-host'>Hosted by {spotDetail.Owner?.firstName} {spotDetail.Owner?.lastName}</h3>
+                    <p data-testid='spot-description'>{spotDetail.description}</p>
                 </div>
                 {/* Callout Information Box */}
-                <div className="callout-info-box">
-                    <div className="callout-info">
-                            <h3 className="price"><strong>${spotDetail.price.toLocaleString()} </strong> night</h3>
+                <div className="callout-info-box" data-testid='spot-callout-box'>
+                    <div className="callout-info" data-testid='review-heading'>
+                            <h3 className="price" data-testid='spot-price'><strong>${spotDetail.price.toLocaleString()} </strong> night</h3>
                             <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
-                            <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
+                            <p className={noReviewClassName} data-testid='spot-rating'> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
                     </div>
-                    <button className="reserve-button" onClick={handleReserveClick}>Reserve</button>
+                    <button className="reserve-button" data-testid='reserve-button' onClick={handleReserveClick}>Reserve</button>
                 </div>
             </div>
             <div className="review-section">
-                <div className="review-star-summary">
-                            <p className="average-rating"> <FaStar /> <strong>{averageRatingFormatted}</strong></p>
-                            <p className={noReviewClassName}> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
+                <div className="review-star-summary" data-testid='reviews-heading'>
+                            <p className="average-rating" > <FaStar /> <strong>{averageRatingFormatted}</strong></p>
+                            <p className={noReviewClassName} data-testid='review-count'> • <FaHashtag /> <strong>{spotDetail.numReviews} {reviewWordText}</strong></p>
                 </div>
-                <button className={postReviewClassName}>
-                <OpenModalMenuItem
-                    className="review-modal"
-                    itemText="Post Your Review"
-                    modalComponent={<ReviewFormModal spotId={spotId} />}
-                    />
-                </button>
-                
+                <div >
+                    <button className={postReviewClassName} data-testid='review-button'>
+                    <OpenModalMenuItem
+                        className="review-modal"
+                        itemText="Post Your Review"
+                        modalComponent={<ReviewFormModal spotId={spotId} />}
+                        />
+                    </button>
+                </div>
                 <Reviews spotId={spotId} />
             </div>
         </div>

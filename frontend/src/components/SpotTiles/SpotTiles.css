@@ -85,6 +85,10 @@
 
 .SpotTileItemStarRating {
     font-size: 0.8rem;
+    margin-left: 8px;
+    position:relative;
+    left:3
+
 }
 
 /* Price styling in the second row */

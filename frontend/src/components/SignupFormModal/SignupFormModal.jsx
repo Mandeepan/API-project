@@ -33,7 +33,7 @@ function SignupFormModal() {
         .then(closeModal)
         .catch(async (res) => {
             const data = await res.json();
-            console.log("===============");
+            console.log("========BACKEND RESPONSE DATA=======");
             console.log(data)
             if (data?.errors) {
             setErrors(data.errors);
@@ -46,13 +46,17 @@ function SignupFormModal() {
     });
     };
 
-    const isAnyFieldEmpty= (!email && !username) || !firstName || !lastName || !password || !confirmPassword ;
+    const isAnyFieldEmpty= !email || !username || !firstName || !lastName || !password || !confirmPassword ;
     const isUserNameTooShort = username.length <4;
     const isPasswordTooShort = password.length <6;
     const disableSignUpButton = isAnyFieldEmpty || isUserNameTooShort || isPasswordTooShort;
 
+    // console.log('++++++++++++ERRORS++++++++')
+    // console.log(errors.email)
+    // console.log(errors.username)
+
     return (
-    <div className='signup-modal'>
+    <div className='signup-modal' data-testid='sign-up-form'>
         <h1 className='signup-header-text'>Sign Up</h1>
         <form onSubmit={handleSubmit} className='signup-modal-input'>
         <label>
@@ -60,36 +64,40 @@ function SignupFormModal() {
             <input
             type="text"
             value={email}
+            data-testid='email-input'
             onChange={(e) => setEmail(e.target.value)}
             required
             />
         </label>
-        {errors.email && <p>{errors.email}</p>}
+        {errors.email && <p data-testid='email-error-message'>{errors.email}</p>}
         <label>
             Username
             <input
             type="text"
             value={username}
+            data-testid='username-input'
             onChange={(e) => setUsername(e.target.value)}
             required
             />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && <p data-testid='username-error-message'>{errors.username}</p>}
         <label>
             First Name
             <input
             type="text"
             value={firstName}
+            data-testid='first-name-input'
             onChange={(e) => setFirstName(e.target.value)}
             required
             />
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
+        {errors.firstName && <p >{errors.firstName}</p>}
         <label>
             Last Name
             <input
             type="text"
             value={lastName}
+            data-testid='last-name-input'
             onChange={(e) => setLastName(e.target.value)}
             required
             />
@@ -100,6 +108,7 @@ function SignupFormModal() {
             <input
             type="password"
             value={password}
+            data-testid='password-input'
             onChange={(e) => setPassword(e.target.value)}
             required
             />
@@ -110,6 +119,7 @@ function SignupFormModal() {
             <input
             type="password"
             value={confirmPassword}
+            data-testid='confirm-password-input'
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             />
@@ -117,7 +127,7 @@ function SignupFormModal() {
         {errors.confirmPassword && (
             <p>{errors.confirmPassword}</p>
         )}
-        <button type="submit" className='signup-button' disabled={disableSignUpButton}>Sign Up</button>
+        <button type="submit" className='signup-button' disabled={disableSignUpButton} data-testid='form-sign-up-button'>Sign Up</button>
         </form>
     </div>
     );

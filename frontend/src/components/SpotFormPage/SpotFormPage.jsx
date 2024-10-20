@@ -97,13 +97,13 @@ export default function SpotFormPage(){
    
 
     return (
-        <form className="create-spot-form-container" action='POST' onSubmit={handleSubmit}>
-            <h1 className="form-title">Create a New Spot</h1>
+        <form className="create-spot-form-container" action='POST' onSubmit={handleSubmit} data-testid='create-spot-form'>
+            <h1 className="form-title" data-testid='form-title'>Create a New Spot</h1>
             {/* section 1 spot info */}
-            <div className="section">
+            <div className="section" data-testid='section-1'>
                 <div className="section-header">
-                    <h3>Where&apos;s your place located?</h3>
-                    <p>Guests will only get your exact address once they booked a reservation.</p>
+                    <h3 data-testid= 'section-1-heading'>Where&apos;s your place located?</h3>
+                    <p data-testid= 'section-1-caption'>Guests will only get your exact address once they booked a reservation.</p>
                 </div>
                 <label>
                     Country
@@ -113,7 +113,7 @@ export default function SpotFormPage(){
                 </label>
                 <label>
                     Street Address
-                    <input type='text'  name='address' placeholder="Address" value={formData.address} onChange={handleChange}>
+                    <input type='text'  name='address' placeholder="Street Address" value={formData.address} onChange={handleChange}>
                     </input>
                     {hasSubmitted && errors.address && (<p className='error'>{errors.address}</p>)}
                 </label>
@@ -134,10 +134,10 @@ export default function SpotFormPage(){
                 </div>
             </div>
             {/* section 2 spot description */}
-            <div className="section">
+            <div className="section" data-testid='section-2'>
                 <div className="section-header">
-                    <h3>Describe your place to guests</h3>
-                    <p>Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>
+                    <h3 data-testid= 'section-2-heading'>Describe your place to guests</h3>
+                    <p data-testid= 'section-2-caption'>Mention the best features of your space, any special amenities like fast wifi or parking, and what you love about the neighborhood.</p>
                 </div>
                 <label>
                     <input type='text' name='description'  placeholder="Please write at least 30 characters" className="description-input" value={formData.description} onChange={handleChange}>
@@ -146,10 +146,10 @@ export default function SpotFormPage(){
                 </label>
             </div>
             {/* section 3 spot name */}
-            <div className="section">
+            <div className="section" data-testid='section-3'>
                 <div className="section-header">
-                    <h3>Create a title for your spot</h3>
-                    <p>Catch guests&apos; attention with a spot title that highlights what makes your place special.</p>
+                    <h3 data-testid= 'section-3-heading'>Create a title for your spot</h3>
+                    <p data-testid= 'section-3-caption'>Catch guests&apos; attention with a spot title that highlights what makes your place special.</p>
                 </div>
                 <label>
                     <input type='text' name='title' placeholder="Name of your spot" value={formData.title} onChange={handleChange}>
@@ -158,32 +158,32 @@ export default function SpotFormPage(){
                 </label>
             </div>
             {/* section 4 spot price */}
-            <div className="section">
+            <div className="section" data-testid='section-4'>
                 <div className="section-header">
-                    <h3>Set a base price for your spot</h3>
-                    <p>Competitive pricing can help your listing stand out and rank higher in search results.</p>
+                    <h3 data-testid= 'section-4-heading'>Set a base price for your spot</h3>
+                    <p data-testid= 'section-4-caption'>Competitive pricing can help your listing stand out and rank higher in search results.</p>
                 </div>
                 <div className="price-row">
                     <label>$</label>
-                    <input type='text' name='price'  placeholder="Price per night (USD)" value={formData.price} onChange={handleChange}>
+                    <input type='number' name='price'  placeholder="Price per night (USD)" value={formData.price} onChange={handleChange}>
                     </input>
                 </div>
                 {hasSubmitted && errors.price && (<p className='error'>{errors.price}</p>)}
             </div>
             {/* section 5 spot photos */}
-            <div className="section">
+            <div className="section" data-testid='section-5'>
                 <div className="section-header">
-                    <h3>Liven up your spot with photos</h3>
-                    <p>Submit a link to at least one photo to publish your spot.</p>
+                    <h3 data-testid= 'section-5-heading'>Liven up your spot with photos</h3>
+                    <p data-testid= 'section-5-caption'>Submit a link to at least one photo to publish your spot.</p>
                 </div>
-                <div className="photo-container">
+                {/* <div className="photo-container"> */}
                     <input type='url'  name='image1' placeholder="Preview Image URL" value={formData.image1} onChange={handleChange}></input>
                     {hasSubmitted && errors.image1 && (<p className='error'>{errors.image1}</p>)}
                     <input type='url'  name='image2' placeholder="Image URL" value={formData.image2} onChange={handleChange}></input>
                     <input type='url'  name='image3' placeholder="Image URL" value={formData.image3} onChange={handleChange}></input>
                     <input type='url'  name='image4' placeholder="Image URL" value={formData.image4} onChange={handleChange}></input>
                     <input type='url'  name='image5' placeholder="Image URL" value={formData.image5} onChange={handleChange}></input>
-                </div>
+                {/* </div> */}
             </div>
             {/* submit button */}
             <button type="submit" className="create-spot-submit-button" >Create Spot</button>

@@ -5,24 +5,27 @@ export default function SpotTileItem({ spot }) {
     const averageRatingFormatted = spot.avgRating ? spot.avgRating.toFixed(1) : "New";
 
     return (
-        <div className="SpotTileItem">
-            <div className="SpotImageWrapper">
+        <div className="SpotTileItem" data-testid='spot-tile'>
+            <div className="SpotImageWrapper" data-testid='spot-tooltip'>
                 <img
                     src={spot.previewImage ? spot.previewImage : "/images/sampleSpotImage.png"}
                     alt="previewImage"
                     className="SpotImage"
+                    data-testid='spot-thumbnail-image'
                 />
-                <div className="SpotTooltip">{spot.name}</div>
+                <div className="SpotTooltip" ><p data-testid='spot-name'>{spot.name}</p></div>
             </div>
             <div className="SpotTileItemDescription">
                 <div className="SpotTileItemFirstRow">
-                    <div><strong>{spot.city}, {spot.state}</strong></div>
-                    <div className="SpotTileItemStarRating">
+                    <div data-testid='spot-city'>
+                        <strong>{spot.city}, {spot.state}</strong>
+                    </div>
+                    <div className="SpotTileItemStarRating" data-testid='spot-rating'>
                                             <FaStar />
                                             <i className="fa-solid fa-star SpotTileItemStar" /> {averageRatingFormatted}
                     </div>
                 </div>
-                <div className="SpotTileItemPrice"><strong>$ {spot.price.toLocaleString()}</strong> night</div>
+                <div className="SpotTileItemPrice" data-testid='spot-price'><strong>$ {spot.price.toLocaleString()}</strong> night</div>
             </div>
         </div>
 
