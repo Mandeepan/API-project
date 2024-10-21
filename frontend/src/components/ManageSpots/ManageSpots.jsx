@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import {getUserSpotsThunk} from '../../store/spots';
 import {deleteSpotThunk} from '../../store/spots';
 import { NavLink, useNavigate } from 'react-router-dom';
-import PageNotFound from '../PageNotFound';
+// import PageNotFound from '../PageNotFound';
 // import OpenModalMenuItem from '../Navigation/OpenModalMenuItem' ;
 import ConfirmDeleteModal from '../ConfirmDeleteModal/ConfirmDeleteModal';
 import { useModal } from '../../context/ModalContext/Modal';
@@ -61,7 +61,15 @@ export default function ManageSpots(){
 	}, [dispatch]);
     
     if (!spots || spots.length === 0 ) {
-        return <PageNotFound />
+        return (
+        <div id="header-button-new-user">
+             <button className="manage-create-spot-button-new-user" >
+                <NavLink to={`/spots/new`} role="link">
+                    Create a New Spot
+                </NavLink>
+            </button>
+        </div>
+        )
     }
 
     const handleUpdate=(e, spotId)=>{
