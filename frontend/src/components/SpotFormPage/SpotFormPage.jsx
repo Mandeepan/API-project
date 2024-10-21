@@ -9,7 +9,8 @@ import {addSpotImageThunk} from '../../store/spots';
 export default function SpotFormPage(){
     const dispatch =useDispatch();
     const navigate =useNavigate();
-
+    const[errors,setErrors]=useState({})
+    const [hasSubmitted, setHasSubmitted] = useState(false);
     const [formData, setFormData] = useState({
 		country: '',
 		address: '',
@@ -24,8 +25,7 @@ export default function SpotFormPage(){
 		image4: '',
 		image5: '',
 	});
-    const[errors,setErrors]=useState({})
-    const [hasSubmitted, setHasSubmitted] = useState(false);
+    
 
     const handleChange = (e) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -45,7 +45,20 @@ export default function SpotFormPage(){
 		setErrors(newErrors);
 	}, [formData]);
     
-   
+    const handleDummyRequestSubmit = async (e) =>{
+        e.preventDefault();
+        const dummyURL='https://img.freepik.com/premium-vector/modern-flat-icon-landscape_203633-11062.jpg'
+        setFormData({
+            country: 'TEST-COUNTRY',
+            address: 'TEST-ADDRESS',
+            city: 'TEST-CITY',
+            state: 'TEST-STATE',
+            description: 'TEST-DESCRIPTION-TEST-DESCRIPTION-TEST-DESCRIPTION-TEST-DESCRIPTION',
+            title: 'TEST-SPOT-NAME',
+            price: 9999,
+            image1: dummyURL
+        });    
+    }
 
     const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -109,6 +122,7 @@ export default function SpotFormPage(){
     return (
         <form className="create-spot-form-container" action='POST' onSubmit={handleSubmit} data-testid='create-spot-form'>
             <h1 className="form-title" data-testid='form-title'>Create a New Spot</h1>
+            <a onClick={handleDummyRequestSubmit} className='fill-dummy-data'>* Click here to fill dummy data</a>
             {/* section 1 spot info */}
             <div className="section" data-testid='section-1'>
                 <div className="section-header">

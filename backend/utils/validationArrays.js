@@ -27,32 +27,32 @@ const validateSpot = [
       .withMessage('Country is required')
       .exists({ checkFalsy: true })
       .withMessage('Country is required'),
-    check('lat')
-      .custom(value => {
-        if(value < -90 || value > 90){
-            return false
-        }else {
-            return true
-        }
-      })
-      .withMessage('Latitude must be within -90 and 90')
-      .exists({ checkFalsy: true })
-      .withMessage('Latitude must be within -90 and 90')
-      .notEmpty()
-      .withMessage('Latitude must be within -90 and 90'),
-    check('lng')
-      .custom(value => {
-        if(value < -180 || value > 180){
-            return false
-        }else {
-            return true
-        }
-      })
-      .withMessage('Longitude must be within -180 and 180')
-      .exists({ checkFalsy: true })
-      .withMessage('Longitude must be within -180 and 180')
-      .notEmpty()
-      .withMessage('Longitude must be within -180 and 180'),
+    // check('lat')
+    //   .custom(value => {
+    //     if(value < -90 || value > 90){
+    //         return false
+    //     }else {
+    //         return true
+    //     }
+    //   })
+    //   .withMessage('Latitude must be within -90 and 90')
+    //   .exists({ checkFalsy: true })
+    //   .withMessage('Latitude must be within -90 and 90')
+    //   .notEmpty()
+    //   .withMessage('Latitude must be within -90 and 90'),
+    // check('lng')
+    //   .custom(value => {
+    //     if(value < -180 || value > 180){
+    //         return false
+    //     }else {
+    //         return true
+    //     }
+    //   })
+    //   .withMessage('Longitude must be within -180 and 180')
+    //   .exists({ checkFalsy: true })
+    //   .withMessage('Longitude must be within -180 and 180')
+    //   .notEmpty()
+    //   .withMessage('Longitude must be within -180 and 180'),
     check('name')
       .exists({ checkFalsy: true })
       .withMessage('Name must be less than 50 characters')

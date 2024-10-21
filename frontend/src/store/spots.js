@@ -78,28 +78,13 @@ export const createSpotThunk = (spot) => async (dispatch) => {
     // try {
         const response = await csrfFetch('/api/spots', options);
         if(response.ok) {
-            console.log('RESPONSE IS OK')
             const newSpot = await response.json();
             dispatch(createSpot(newSpot));
             return newSpot;
         } else {
-            console.log('RESPONSE IS NOOOTTT OK')
             const error = await response.json();
             throw error;
-            // console.log("====GOOD ERROR HANDLING====")
-            // console.log(error)
-            // return error
         }
-    // } catch (err) {
-    //     console.log("====BACKEND ERROR BANG===")
-    //     console.log(err)
-    //     const errRes =err.json();
-    //     console.log(errRes)
-    //     return errRess;
-    //     // let error ={Error: err}
-    //     // const errRes= await error.json()
-    //     // return errRes
-    // }
 }
 
 // adding spot image to spotImage table at the backend

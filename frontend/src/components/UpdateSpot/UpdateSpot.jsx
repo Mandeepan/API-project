@@ -63,8 +63,6 @@ export default function UpdateSpot(){
                 })
             }
 
-            console.log("======SPOT IMAGES======")
-            console.log(currentSpotImages)
 
             setFormData({
                 country: spotDetail.country,
