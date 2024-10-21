@@ -79,3 +79,43 @@
     word-spacing: 0px;
     color:#b5264e;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+    .navbar-wrapper {
+        padding: 0 10px; /* Reduce padding to save space */
+    }
+
+    .profile-dropdown {
+        font-size: 0.9rem; /* Make dropdown items slightly smaller */
+        padding: 15px; /* Reduce padding to make it more compact */
+    }
+
+    .header-list {
+        font-size: 1.5rem; /* Reduce header list font size */
+        margin-right: 1.5rem;
+        margin-left: 1.5rem;
+    }
+
+    .header-list li {
+        margin-right: 1rem; /* Reduce space between list items */
+    }
+
+    .logo-image {
+        max-width: 2.5rem; /* Make logo slightly smaller */
+        max-height: 2.5rem;
+    }
+
+    .header-right-button {
+        width: 1.8rem; /* Reduce button size */
+        height: 1.8rem;
+        margin-left: 0.5rem; /* Reduce space between buttons */
+    }
+
+    .create-spot-button {
+        font-size: 1rem; /* Reduce font size of the button */
+    }
+}

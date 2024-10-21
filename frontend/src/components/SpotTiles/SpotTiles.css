@@ -20,6 +20,9 @@
     border-radius: 8px;
     overflow: hidden;
     background-color: #fff;
+    display: flex; /* Make each tile a flex container */
+    flex-direction: column; /* Stack the elements vertically */
+    height: 100%; /* Make all boxes the same height */
 }
 
 .SpotTileItem:hover {
@@ -39,6 +42,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 
@@ -68,6 +72,10 @@
 /* Description container */
 .SpotTileItemDescription {
     padding: 15px;
+    flex-grow: 1; /* Allow the description to grow and occupy available space */
+    display: flex;
+    flex-direction: column; /* Stack the description elements vertically */
+    justify-content: space-between; /* Spread the description elements */
 }
 
 /* First row with city/state and star rating */
@@ -99,3 +107,38 @@
 
 
 
+
+/* Media query for typical narrow screens (e.g., tablets and small devices) */
+@media (max-width: 768px) {
+    .SpotTiles {
+        grid-template-columns: repeat(2, 1fr)!important; /* Reduce columns to 2 per row */
+        gap: 15px; /* Reduce gap to make better use of space */
+        padding: 15px; /* Reduce padding for smaller screens */
+        margin-left: 2%;
+        margin-right: 2%;
+    }
+
+    .SpotImageWrapper {
+        height: 120px; /* Reduce image height for smaller screens */
+    }
+
+    .SpotTileItemDescription {
+        padding: 10px; /* Reduce padding inside the description */
+    }
+}
+
+/* Media query for extra small screens (e.g., mobile phones) */
+@media (max-width: 480px) {
+    .SpotTiles {
+        grid-template-columns: 1fr !important; /* Only one column per row for very small screens */
+        gap: 10px; /* Further reduce the gap between tiles */
+    }
+
+    .SpotImageWrapper {
+        height: 100px; /* Further reduce image height for very small screens */
+    }
+
+    .SpotTileItemDescription {
+        font-size: 0.9rem; /* Reduce text size slightly for very small screens */
+    }
+}
