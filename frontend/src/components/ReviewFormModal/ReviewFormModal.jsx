@@ -67,7 +67,7 @@ export default function ReviewFormModal ({spotId}){
             <label><strong> Stars</strong></label>
          </div>
          {errors.stars && <p className='error'>{errors.stars}</p>}
-         <button type="submit" className="review-submit-button"  disabled={reviewContent.length<10 || !selectedValue}>Submit Your Review</button>
+         <button type="submit" className="review-submit-button" disabled={reviewContent.length<10 || !selectedValue}>Submit Your Review</button>
     </form> 
     )
 

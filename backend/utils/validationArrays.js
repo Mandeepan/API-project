@@ -68,7 +68,7 @@ const validateSpot = [
       .exists({ checkFalsy: true })
       .withMessage('Description is required'),
     check('price')
-      .isInt({min: 0})
+      .isInt({min: 1})
       .withMessage('Price per day must be a positive number')
       .exists({ checkFalsy: true })
       .withMessage('Price per day must be a positive number'),
