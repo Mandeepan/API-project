@@ -75,16 +75,28 @@ export const createSpotThunk = (spot) => async (dispatch) => {
         body: JSON.stringify(spot)
     }
     
-    // try {
+    try {
         const response = await csrfFetch('/api/spots', options);
-        if(response.ok) {
-            const newSpot = await response.json();
-            dispatch(createSpot(newSpot));
-            return newSpot;
-        } else {
-            const error = await response.json();
-            throw error;
-        }
+        const newSpot = await response.json();
+        dispatch(createSpot(newSpot));
+        return newSpot;
+    }catch(err) {
+        const error = await err.json();
+        return error;
+        // console.log("++++ THUNK ERROR RESPONSE++++");
+        // if (!err.ok) {
+        //     console.log("fetch error")
+        // } else {
+        //     console.log("other type of errors")
+        // }
+    }
+        // if(response.ok) {
+            
+        // } else {
+        //     console.log("++++ THUNK ERROR RESPONSE++++");
+        //     const error = await response.json();
+        //     return error;
+        // }
 }
 
 // adding spot image to spotImage table at the backend

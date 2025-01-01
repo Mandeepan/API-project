@@ -27,7 +27,7 @@ export default function ReviewFormModal ({spotId}){
 			newErrors.stars = 'Stars must be between 1 and 5';
         }
         setErrors(newErrors);
-    }, [reviewContent,selectedValue])
+    }, [reviewContent,selectedValue,hoverValue])
 
     
 	const handleSubmit = async (e) => {

@@ -48,7 +48,7 @@ module.exports = {
       },
       {
         spotId: 5,
-        url: 'https://www.keyholdersinternational.com/assets/upload/68a59132a0f3c933121040022965b4a0.jpg',
+        url: 'https://blog.savills.com/_images/queens-gdns(1).jpg',
         preview: true
       },
       {
@@ -166,7 +166,7 @@ module.exports = {
         'https://cdn.floridadesign.com/wp-content/uploads/sites/137/2021/07/Venetian-Islands-home-photo-by-Paul-Stoppi-designed-byDunagan-Diverio_MHD17-2G.jpg',
         'https://images.squarespace-cdn.com/content/v1/54b30f27e4b07e1bade0f312/1428317526726-Q7LBI1GEG6A3VQE7EM0G/image-asset.jpeg',
         'https://st.hzcdn.com/simgs/pictures/soggiorni/classic-mansion-in-paris-spazio-progetto-img~3a51dab50bb4d74e_4-0126-1-6be2749.jpg',
-        'https://www.keyholdersinternational.com/assets/upload/68a59132a0f3c933121040022965b4a0.jpg',
+        'https://blog.savills.com/_images/queens-gdns(1).jpg',
         'https://nt.global.ssl.fastly.net/binaries/content/gallery/website/national/regions/london/places/fenton-house-and-garden/library/exterior-view-fenton-house-garden-london-1083414.jpg',
         'https://media.immo-facile.com/office8/vingt_paris/catalog/images/pr_p/5/2/9/6/0/7/3/8/52960738a.jpg?DATEMAJ=02/08/2023-14:37:30',
         'https://media.houseandgarden.co.uk/photos/6673fbe18d71c33fd9523373/16:9/w_2560,h_1440,c_limit/H28_London_Warehouse_Lounge_01_L.jpg',
